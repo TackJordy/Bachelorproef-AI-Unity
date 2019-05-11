@@ -1,0 +1,23 @@
+// This will control the AI player
+tree("Root")
+	fallback
+		tree("FireEnemyVisible")
+		tree("Searching")
+
+tree("FireEnemyVisible")
+	fallback
+		EnemyWithinViewRange
+		while EnemyDetected
+			repeat
+				sequence
+					AimAtEnemy
+					tree("Fire")
+
+tree("Searching")
+	while ReachedDestination  
+		RandomDestination
+
+tree("Fire")
+	sequence
+		Wait(0.5)
+		Fire
